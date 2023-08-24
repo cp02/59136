@@ -620,7 +620,7 @@ function wp_dashboard_recent_drafts( $drafts = false ) {
 			'post_type'      => 'post',
 			'post_status'    => 'draft',
 			'author'         => get_current_user_id(),
-			'posts_per_page' => 4,
+			'posts_per_page' => 5,
 			'orderby'        => 'modified',
 			'order'          => 'DESC',
 		);
@@ -642,7 +642,7 @@ function wp_dashboard_recent_drafts( $drafts = false ) {
 
 	echo '<div class="drafts">';
 
-	if ( count( $drafts ) > 3 ) {
+	if ( count( $drafts ) > 4 ) {
 		printf(
 			'<p class="view-all"><a href="%s">%s</a></p>' . "\n",
 			esc_url( admin_url( 'edit.php?post_status=draft' ) ),
@@ -656,7 +656,7 @@ function wp_dashboard_recent_drafts( $drafts = false ) {
 	/* translators: Maximum number of words used in a preview of a draft on the dashboard. */
 	$draft_length = (int) _x( '10', 'draft_length' );
 
-	$drafts = array_slice( $drafts, 0, 3 );
+	$drafts = array_slice( $drafts, 0, 5 );
 	foreach ( $drafts as $draft ) {
 		$url   = get_edit_post_link( $draft->ID );
 		$title = _draft_or_post_title( $draft->ID );
